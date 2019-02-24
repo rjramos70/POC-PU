@@ -28,12 +28,12 @@ Como esta aplicação é somente uma prova de conceito, não foi escolhido banco
 Lista de Ofertas
 
 <p align="left">
-  <img src="https://github.com/rjramos70/POC-PU/tree/master/WebContent/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
+  <img src="https://github.com/rjramos70/POC-PU/blob/master/WebContent/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
 </p>
 
 ## Melhorias
 
-Para a evolução da aplicação devemos subistituir a camada de Persistência para serviços RESTFull segregado em um novo projeto, isto visa a melhora na escalabilidade do backend e implementação de novos frontends como uma App Mobile.
+Para a evolução da aplicação devemos subistituir a camada de Persistência para serviços RESTFull segregado em um novo projeto, isto visa a melhora na escalabilidade do backend e implementação de novos frontends como uma App Mobile por exemplo.
 
  
 
