@@ -27,8 +27,11 @@ Como esta aplicação é somente uma prova de conceito, não foi escolhido banco
 
 Lista de Ofertas
 
+![screenshot](https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_lista_ofertas.png)
+
+
 <p align="left">
-  <img src="https://github.com/rjramos70/POC-PU/blob/master/WebContent/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
+  <img src="https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
 </p>
 
 ## Melhorias
