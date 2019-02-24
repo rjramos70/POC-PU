@@ -1,6 +1,6 @@
 # POC-PU
 
-Projeto de prova de conceito de uma plataforma web de vantagens simplificada do qual conta com a publicação de ofertas e suas respectivas opções de compra 
+Projeto de prova de conceito de uma plataforma web de vantagens simplificada do qual conta com a publicação de ofertas e suas respectivas opções de compra. 
 
 ## Instalar
 
