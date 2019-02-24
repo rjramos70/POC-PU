@@ -17,7 +17,7 @@ Após executar o projeto via IDE, abrir um navegador e acessar a URL http://loca
 
 ## Casos de Teste
 
-xx
+[ A ser implementado ]
 
 ## Persistência
 
