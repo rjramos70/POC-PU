@@ -32,7 +32,12 @@ Lista de Ofertas
 
 ## Melhorias
 
-Para a evolução da aplicação devemos subistituir a camada de Persistência para serviços RESTFull segregado em um novo projeto, isto visa a melhora na escalabilidade do backend e implementação de novos frontends como uma App Mobile por exemplo.
+Para a evolução da aplicação devemos:
+
+	1. Subistituir a camada de Persistência para serviços RESTFull segregado em um novo projeto, visando a melhora a escalabilidade do backend.
+	2. Implementação de testes integrados.
+	3. Implementação de novos frontends para aplicações moveis.
+	
 
  
 
