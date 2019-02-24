@@ -30,10 +30,6 @@ Lista de Ofertas
 ![screenshot](https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_lista_ofertas.png)
 
 
-<p align="left">
-  <img src="https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
-</p>
-
 ## Melhorias
 
 Para a evolução da aplicação devemos subistituir a camada de Persistência para serviços RESTFull segregado em um novo projeto, isto visa a melhora na escalabilidade do backend e implementação de novos frontends como uma App Mobile por exemplo.
