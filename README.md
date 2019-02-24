@@ -17,12 +17,19 @@ Após executar o projeto via IDE, abrir um navegador e acessar a URL http://loca
 
 ## Casos de Teste
 
-
+xx
 
 ## Persistência
 
 Como esta aplicação é somente uma prova de conceito, não foi escolhido banco de dados, mas sim a utilização de um pattern Singleton junto com o um Repository para representar a camdada de banco de dados.
 
+## Interfaces
+
+Lista de Ofertas
+
+<p align="left">
+  <img src="https://github.com/rjramos70/POC-PU/images/tela_lista_ofertas.png" title="tela do teste feito localmente para listar as ofertas já cadastradas">
+</p>
 
 ## Melhorias
 
