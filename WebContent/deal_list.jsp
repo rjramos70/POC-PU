@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Lista de Ofertas</title>
 </head>
 <body>
 <%@ include file="parts/header.jsp" %>  
@@ -15,7 +15,7 @@
 <%
 	DbRepository repo = DbRepository.getInstance();
 
-	Map<String, Deal> dealMap = repo.dealMap;
+	Map<String, Deal> dealMap = repo.getDealMap();
 
 %>
 
@@ -23,7 +23,7 @@
 		<table class="table">
 			<tr style="background-color: white;" class="table table-borderless">
 				<th scope="col" class="text-right"><a
-					href="<%=request.getContextPath()%>/cad_deal.jsp"
+					href="<%=request.getContextPath()%>/deal_cad.jsp"
 					style="align-content: flex-end;">Add Deal(+)</a></th>
 			</tr>
 			<tbody>
@@ -45,7 +45,7 @@
 							if (dealMap.size() < 1) {
 						%>
 						<tr>
-							<td colspan="5">No deals</td>
+							<td colspan="8">Sem Ofertas</td>
 						</tr>
 						<%
 							} else {

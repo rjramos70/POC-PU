@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,7 +23,7 @@
 <header>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="index.jsp">POC-PU</a>
+  <a class="navbar-brand" href="deal_list.jsp">POC-PU</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -36,8 +35,9 @@
           Oferta
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarOferta">
-          <a class="dropdown-item" href="cad_deal.jsp">Cadastro</a>
-          <a class="dropdown-item" href="#">Vincular OpÃ§Ãµes de Compra</a>
+          <a class="dropdown-item" href="deal_cad.jsp">Cadastro</a>
+          <a class="dropdown-item" href="deal_list.jsp">Lista Ofertas</a>
+          <a class="dropdown-item" href="vincular_opcoes.jsp">Vincular Opções de Compra</a> 
           <!-- 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
@@ -46,10 +46,11 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarOpcaoCompra" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          OpÃ§Ã£o de Compra
+          Opção de Compra
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarOpcaoCompra">
           <a class="dropdown-item" href="#">Cadastro</a>
+          <a class="dropdown-item" href="buy_option_list.jsp">Lista Opções</a>
         </div>
       </li>
       <!-- 

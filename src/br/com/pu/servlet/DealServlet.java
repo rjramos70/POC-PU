@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +33,23 @@ public class DealServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+    	System.out.println("DealServlet Init called...");
+    	try {
+    		super.init(config);
+    	} catch (ServletException e) {
+    		e.printStackTrace();
+    	}
+    }
+    
+    
+    @Override
+    public void destroy() {
+    	System.out.println("DealServlet Destroyed...");
+    	super.destroy();
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -44,13 +62,7 @@ public class DealServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	@SuppressWarnings("deprecation")
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		// doGet(request, response);
-		
-		// DateFormat
-		
-		
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String title = request.getParameter("title");
 		String text = request.getParameter("text");
@@ -72,12 +84,13 @@ public class DealServlet extends HttpServlet {
 		System.out.println(" endDate: " + endDate);
 		System.out.println(" type: " + type);
 		*/
-		dealService.creareDeal(title, text, publishDate, endDate, type);
+		dealService.createDeal(title, text, publishDate, endDate, type);
 		
 		// Deal d = dealService.getDeal(title);
 		// System.out.println("Deal : " + d.toString());
+		response.setContentType("text/html");
 		
-		response.sendRedirect(request.getContextPath() + "/index.jsp");
+		response.sendRedirect(request.getContextPath() + "/deal_list.jsp");
 	
 	}
 

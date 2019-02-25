@@ -30,6 +30,11 @@ Lista de Ofertas
 ![screenshot](https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_lista_ofertas.png)
 
 
+Cadastro de Oferta
+
+![screenshot](https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_deal_cad.png)
+
+
 ## Melhorias
 
 Para a evolução da aplicação devemos:

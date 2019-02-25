@@ -1,10 +1,8 @@
 package br.com.pu.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-
-
+import java.util.List;
 
 public class Deal {
 	
@@ -16,6 +14,7 @@ public class Deal {
 	private String url;
 	private long totalSold;
 	private String type;
+	private List<BuyOption> options = new ArrayList<BuyOption>();
 	
 	public Deal(String title, String text, Date publishDate, Date endDate, String type) {
 		super();
@@ -25,7 +24,7 @@ public class Deal {
 		this.publishDate = publishDate;
 		this.endDate = endDate;
 		this.type = type;
-		this.url = "/" + uppercaseFirstLetter(title.replace(".", ""));
+		this.url = "/" + removeTodosCaracteresQueNaoSaoAlphaNumericos(uppercaseFirstLetter(title));
 		
 	}
 
@@ -92,22 +91,41 @@ public class Deal {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	private void addOption(BuyOption option) {
+		// Verifica se Opition já existe na lista
+		if(!this.options.contains(option)) {
+			this.options.add(option);
+		}
 
+	}
+	
+	public void updateTotalSold() {
+		// Implementar
+	}
+
+	/*
+	public static String removerAcentos(String str) {
+	    return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+	}
+	*/
+	
+	// Remove TODOS os caracteres que não seja alpha numericos, ou seja, pontuações e espaços;
+	public static String removeTodosCaracteresQueNaoSaoAlphaNumericos(String str) {
+	    return str.replaceAll("\\W", "");   
+	}
+	
 	public String uppercaseFirstLetter(String text) {
-	    System.out.println("uppercaseFirstLetter.text: " + text);
+		System.out.println(" uppercaseFirstLetter : " + text);
 		if (text == null || text.length() == 0) {
 	        return text;
 	    }
 	    String[] w = text.split(" ");
-	    
-	    System.out.println("Qtd. words: "+ w.length);
-	    
+	    System.out.println(" w.length : " + w.length);
 	    String ret = null;
 	    for (String word : w) {
-	    	System.out.println("word: " + word);
-	    	ret += capitalizeFirstLetter(word);
+	    	ret += word.substring(0, 1).toUpperCase() + word.substring(1);
 		}
-	    // return text.substring(0, 1).toUpperCase() + text.substring(1).replaceAll("\\s","");
 	    return ret.replaceAll("null", "");
 	}
 	
