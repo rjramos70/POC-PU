@@ -92,7 +92,11 @@ public class Deal {
 		this.type = type;
 	}
 	
-	private void addOption(BuyOption option) {
+	public List<BuyOption> getOptions() {
+		return options;
+	}
+	
+	public void addOption(BuyOption option) {
 		// Verifica se Opition já existe na lista
 		if(!this.options.contains(option)) {
 			this.options.add(option);
@@ -104,11 +108,9 @@ public class Deal {
 		// Implementar
 	}
 
-	/*
-	public static String removerAcentos(String str) {
-	    return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+	public int getQtdOpcoesVinculadas() {
+		return this.options.size();
 	}
-	*/
 	
 	// Remove TODOS os caracteres que não seja alpha numericos, ou seja, pontuações e espaços;
 	public static String removeTodosCaracteresQueNaoSaoAlphaNumericos(String str) {

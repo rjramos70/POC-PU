@@ -1,11 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <%@page import="br.com.pu.model.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Cadastro de OpÃ§Ã£o</title>
+<title>Cadastro de Opção</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
@@ -33,19 +31,19 @@
 							</div>
 							<div class="form-group">
 								<label for="normalPrice">Normal Price</label>
-								<input type="text" class="form-control" id="normalPrice" name="normalPrice"
+								<input type="text" class="form-control" id="normalPrice" name="normalPrice" onkeydown="transporValor()"
 									required>
-								<div class="valid-feedback">Looks good!</div>
-							</div>
-							<div class="form-group">
-								<label for="salePrice">Sale Price</label>
-								<input type="text" class="form-control" id="salePrice" name="salePrice" required>
 								<div class="valid-feedback">Looks good!</div>
 							</div>
 							<div class="form-group">
 								<label for="percentageDiscount">Percentage Discount</label>
 								<input type="text" class="form-control" placeholder="00.0" id="percentageDiscount" name="percentageDiscount" onkeydown="calcular()"
-								 	 required>
+								 	 value="0" required>
+								<div class="valid-feedback">Looks good!</div>
+							</div>
+							<div class="form-group">
+								<label for="salePrice">Sale Price</label>
+								<input type="text" class="form-control" id="salePrice" name="salePrice" required>
 								<div class="valid-feedback">Looks good!</div>
 							</div>
 							<div class="form-group">
@@ -74,12 +72,23 @@
 		</form>
 <script>
 function calcular() {
-	// alert('Calcular.....');
-	var normalPrice = document.getElementById("normalPrice").value;
-	var percentageDiscount = document.getElementById("percentageDiscount").value;
-	var salePrice = (normalPrice - (normalPrice / percentageDiscount)).toFixed(2);
-	// alert('normalPrice : ' + normalPrice + '; percentageDiscount : ' + percentageDiscount + '; salePrice : ' + salePrice)
-	document.getElementById("salePrice").value = salePrice;
+	if(document.getElementById("percentageDiscount").value > 0){
+		// alert('Calcular.....');
+		var normalPrice = document.getElementById("normalPrice").value;
+		var percentageDiscount = document.getElementById("percentageDiscount").value;
+		var salePrice = (normalPrice - (normalPrice / percentageDiscount)).toFixed(2);
+		// alert('normalPrice : ' + normalPrice + '; percentageDiscount : ' + percentageDiscount + '; salePrice : ' + salePrice)
+		document.getElementById("salePrice").value = salePrice;
+	}else{
+		document.getElementById("salePrice").value = document.getElementById("normalPrice").value;
+	}
+
+}
+
+function transporValor(){
+	if(document.getElementById("normalPrice").value != null){
+		document.getElementById("salePrice").value = document.getElementById("normalPrice").value;
+	}
 }
 </script>
 

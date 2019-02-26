@@ -1,31 +1,84 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@page import="br.com.pu.repository.*"%>
 <%@page import="br.com.pu.model.*"%>
 <%@page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Vincula OpÃ§Ãµes</title>
+<title>Vincula Opções</title>
 <style>
-.card{
-  float: left;
+.deal{
+  position: relative;
+  top: 20px;
+  left: 20px;
   width: 300px;
-  height: 350px;
+  height: 100%;
   margin: 10px;
   padding: 10px;
   border: 1px solid black;
 }
 
+.deal-inner{
+  border: 1px solid red; 
+  height: 300px; 
+  width: 100%; 
+  background-color: #F6F5F4;
+}
 .receive{
-  float: left;
   width: 100%;
   height: 50%;
-  margin: 2px;
-  padding: 2px;
+  margin: 1px;
+  padding: 1px;
   border: 1px solid black;
 }
+
+.option{
+  position: relative;
+  top: 50px;
+  left: 350px;
+  width: 400px;
+  height: 400px;
+  margin: 1px;
+  padding: 1px;
+  border: 1px solid black;
+}
+
+.option-inner{
+  align-items: center;
+  width: 82%;
+  margin: 1px;
+  padding: 1px;
+  border: 1px solid black;
+  
+}
+
+.container2 {
+  position: relative;
+  top: 20px;
+  background: lightgray;
+}
+.box-orange {
+  position: absolute;
+  background: orange;
+  height: 300px;
+  width: 250px;
+  right: 5px;    
+}
+.box-blue {
+  background: lightskyblue;
+  position: static;   
+  height: 300px;
+  width: 250px;
+}
+
+#div1, #div2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
 </style>
 
 
@@ -55,56 +108,90 @@ function drop(ev) {
 
 	List<BuyOption> optionList = repo.getOptionList();
 	Map<String, Deal> dealMap = repo.getDealMap();
-
+	
+	String title = request.getParameter("title");
+	Deal deal = dealMap.get(title);
 %>
-
-
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" class="card">
-  <% 
-  if (optionList.size() > 0) {
-	  %>
-	  <div class="card" style="width: 18rem;">
-  		<ul class="list-group list-group-flush">
-	  <%
-	  for (BuyOption option : optionList) {
-  %>
-  	<li class="list-group-item"  draggable="true" ondragstart="drag(event)" id="<%=option.getId()%>" class="card"><%=option.getTitle()%></li>
-  <%
-	  }
-	  %>
-		</ul>
-	 </div>
-	  <%
-  }else{
-	  %>Sem OpÃ§Ãµes<%
-  }
-  %>
-
+<div class="container">
+	<table class="table table-borderless" style="border: 0px solid black;">
+	  <thead>
+	    <tr>
+	      <th scope="col">Oferta</th>
+	      <th scope="col"><div class="row justify-content-between">Opções de Compra 
+						  <a href="<%=request.getContextPath()%>/buy_option_cad.jsp"
+					style="align-content: flex-end;">Add Buy Option(+)</a></div></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th>
+			<div class="card" style="width: 22rem;">
+			  <div class="card-header">
+			    <%=deal.getTitle()%>
+			  </div>
+			  <div class="card-body">
+			    <h5 class="card-title"><%=deal.getText()%></h5>
+			    <p class="card-text">Created: <%=deal.getCreateDate()%></p>
+			    <p class="card-text">Publish: <%=deal.getPublishDate()%></p>
+			    <p class="card-text">End: <%=deal.getEndDate()%></p>
+			    <div class="card" style="width: 18rem;">
+				  <div class="card-header">
+				    Opções de Compra
+				  </div>
+				  <div class="card-body">
+				    <%
+				    	for(BuyOption option: deal.getOptions()){
+				    
+				    %>
+				    <div class="input-group mb-3">
+					  <div class="input-group-prepend">
+					    <div class="input-group-text">
+					    	<input type="checkbox" name="ipOpcao" value="<%=option.getId()%>"/>
+					    </div>
+					  </div>
+					  <input type="text" class="form-control" aria-label="Text input with checkbox" value="<%=option.getTitle()%>" readonly="true">
+					</div>
+					<%
+				    	}
+					%>
+				  </div>
+				</div>
+			  </div>
+			</div>
+			
+		  </th>
+	      <td>
+	      <form method="post" action="VinculaOpcoesServlet">
+	      <input type="hidden" name="title" value="<%=deal.getTitle()%>">
+			<% 
+			if (optionList.size() > 0) { 
+				for (BuyOption option : optionList) {
+			%>
+			<div class="input-group mb-3">
+			  <div class="input-group-prepend">
+			    <div class="input-group-text">
+			    	<input type="checkbox" name="ipOpcao" value="<%=option.getId()%>"/>
+			    </div>
+			  </div>
+			  <input type="text" class="form-control" aria-label="Text input with checkbox" value="<%=option.getTitle()%>" readonly="true">
+			</div>
+			<%
+				}
+			%>
+			  <button type="submit" class="btn btn-primary">Vincular Opções</button>
+		   </form>
+			<%
+			}else{
+			%> 
+				Sem Opções
+			<%
+			}
+			%>
+		  </td>
+	    </tr>
+	  </tbody>
+	</table>
 </div>
-<%
-	if (dealMap.size() < 1) {
-%>
-Sem Ofertas
-<%
-	}else{
-		for (String key : dealMap.keySet()) {
-			Deal d = dealMap.get(key);
-%>
-	
-	
-	<div class="card" style="width: 18rem;">
-	  <div class="card-body">
-	    <h5 class="card-title"><%=d.getTitle()%></h5>
-	    <p class="card-text"><%=d.getText()%></p>
-	    <div id="<%=d.getTitle()%>" ondrop="drop(event)" ondragover="allowDrop(event)" class="receive"></div>
-	  </div>
-	</div>
-
-<%
-		} 		
-	}
-%>
-<br>
 
 </body>
 </html>

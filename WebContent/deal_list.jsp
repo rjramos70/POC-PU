@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <%@page import="br.com.pu.repository.*"%>
 <%@page import="br.com.pu.model.*"%>
 <%@page import="java.util.*"%>
@@ -30,14 +29,16 @@
 				<table class="table">
 					<thead class="thead-light">
 						<tr>
-							<th scope="col" style="width: 30%;">Title</th>
-							<th scope="col" style="width: 20%;">Text</th>
-							<th scope="col">Created</th>
-							<th scope="col">Publish</th>
-							<th scope="col">End</th>
-							<th scope="col">Url</th>
-							<th scope="col">Sold</th>
-							<th scope="col">Type</th>
+							<th scope="col" class="align-middle" style="width: 30%;">Title</th>
+							<th scope="col" class="align-middle" style="width: 20%;">Text</th>
+							<th scope="col" class="align-middle">Created</th>
+							<th scope="col" class="align-middle">Publish</th>
+							<th scope="col" class="align-middle">End</th>
+							<th scope="col" class="align-middle">Url</th>
+							<th scope="col" class="align-middle">Sold</th>
+							<th scope="col" class="align-middle">Type</th>
+							<th scope="col" class="align-middle">Qtd. Vinculados</th>
+							<th scope="col" class="align-middle">Vincular</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,22 +54,33 @@
 									Deal d = dealMap.get(key);
 						%>
 						<tr>
-							<td scope="row"
-								style="font-size: small; font-size-adjust: inherit;"><%=d.getTitle()%></td>
+							<td scope="col"style="font-size: small; font-size-adjust: inherit;" class="align-middle"><%=d.getTitle()%></td>
 							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getText()%></td>
 							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getCreateDate()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getPublishDate()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getEndDate()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getUrl()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;" class="text-center"><%=d.getTotalSold()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=d.getType()%></td>
+							<td scope="row"
+								style="font-size: x-small; font-size-adjust: inherit;"  class="text-center"><%=d.getQtdOpcoesVinculadas()%></td>
+							<td scope="row" style="font-size: x-small; font-size-adjust: inherit;" class="text-center">
+								<form method="post"
+									action="<%=request.getContextPath()%>/vincular_opcoes.jsp">
+									<input type="hidden" id="title" name="title" value="<%=d.getTitle()%>"> 
+									<button type="submit">
+										<img src="<%=request.getContextPath()%>/images/attach-option-24x24.png"
+											class="rounded" alt="Vai para a tela onde devemos vincular as opções de compra." style="border: none;">
+									</button>
+								</form>
+							</td>
 						</tr>
 						<%       } 
 							}

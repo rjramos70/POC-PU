@@ -1,11 +1,9 @@
-
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <!-- Required meta tags -->
-<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -35,10 +33,11 @@
           Oferta
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarOferta">
-          <a class="dropdown-item" href="deal_cad.jsp">Cadastro</a>
+          <!--  <a class="dropdown-item" href="deal_cad.jsp">Cadastro</a> -->
           <a class="dropdown-item" href="deal_list.jsp">Lista Ofertas</a>
-          <a class="dropdown-item" href="vincular_opcoes.jsp">Vincular Opções de Compra</a> 
           <!-- 
+          <a class="dropdown-item" href="vincular_opcoes.jsp">Vincular Opções de Compra</a> 
+          
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Something else here</a>
            -->
@@ -49,8 +48,8 @@
           Opção de Compra
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarOpcaoCompra">
-          <a class="dropdown-item" href="#">Cadastro</a>
-          <a class="dropdown-item" href="buy_option_list.jsp">Lista Opções</a>
+          <!--  <a class="dropdown-item" href="#">Cadastro</a>  -->
+          <a class="dropdown-item" href="buy_option_list.jsp">Listar Opções de Compra</a>
         </div>
       </li>
       <!-- 

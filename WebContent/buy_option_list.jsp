@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+
 <%@page import="br.com.pu.repository.*"%>
 <%@page import="br.com.pu.model.*"%>
 <%@page import="java.util.*"%>
@@ -7,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista de OpÃ§Ãµes</title>
+<title>Lista de Opções</title>
 
 
 </head>
@@ -37,10 +36,11 @@
 							<th scope="col" style="width: 30%;" class="align-middle">Title</th>
 							<th scope="col" style="width: 20%;" class="align-middle">Normal Price</th>
 							<th scope="col" class="align-middle text-center">Percentage Discount</th>
-							<th scope="col" class="align-middle text-center">PreÃ§o de Venda</th>
+							<th scope="col" class="align-middle text-center">Preço de Venda</th>
 							<th scope="col" class="align-middle text-center">Quantity Cupom</th>
 							<th scope="col" class="align-middle">Start Date</th>
 							<th scope="col" class="align-middle">End Date</th>
+							
 						</tr>
 					</thead>
 					<tbody>
@@ -48,7 +48,7 @@
 							if (optionList.size() < 1) {
 						%>
 						<tr>
-							<td colspan="7">Sem OpÃ§Ãµes de Compra</td>
+							<td colspan="7">Sem Opções de Compra</td>
 						</tr>
 						<%
 							} else {
@@ -68,12 +68,19 @@
 								style="font-size: small; font-size-adjust: inherit;" class="text-center"><%=option.getSalePrice()%></td>
 							<td scope="row"
 								style="font-size: small; font-size-adjust: inherit;" class="text-center"><%=option.getQuantityCupom()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;"><%=option.getStartDate()%></td>
-								<td scope="row"
+							<td scope="row"
 								style="font-size: x-small; font-size-adjust: inherit;" class="text-center"><%=option.getEndDate()%></td>
+							
 								
 						</tr>
+						
+						
+						
+						
+						
+						
 						<%       } 
 							}
 						 %>	

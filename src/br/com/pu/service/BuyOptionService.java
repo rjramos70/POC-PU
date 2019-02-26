@@ -56,4 +56,13 @@ public class BuyOptionService {
 		}
 		return null;
 	}
+	
+	public BuyOption getOptionById(int id ){
+		for(BuyOption tmp : this.repo.getOptionList()) {
+			if(tmp.getId() == id) {
+				return tmp;
+			}
+		}
+		return null;
+	}
 }
