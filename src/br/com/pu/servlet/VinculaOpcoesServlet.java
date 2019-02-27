@@ -1,12 +1,15 @@
 package br.com.pu.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.pu.model.BuyOption;
 import br.com.pu.model.Deal;
 import br.com.pu.service.BuyOptionService;
 import br.com.pu.service.DealService;
@@ -41,23 +44,57 @@ public class VinculaOpcoesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String title = request.getParameter("title");
-		Deal deal = this.dealService.getDeal(title);
-		
-		String[] Ids = request.getParameterValues("ipOpcao");
-		int[] IdsInt = new int[Ids.length]; 
-		for (int i = 0; i < IdsInt.length; i++){
-			IdsInt[i] = Integer.parseInt(Ids[i]); 
+		String action = request.getParameter("action");
+
+		// Verifica se é para vincular ou desvincular a oferta	
+		// Caso: Vincula
+		if (action.equalsIgnoreCase("vincular")) {
+			
+			String[] Ids = request.getParameterValues("ipOpcaoVincular");
+			int[] IdsInt = new int[Ids.length]; 
+			for (int i = 0; i < IdsInt.length; i++){
+				IdsInt[i] = Integer.parseInt(Ids[i]); 
+			}
+			for (int id : IdsInt) {
+				BuyOption option = optionService.getOptionById(id);
+				option.setVinculado(true);
+				dealService.getDeal(title).addOptionInDeal(option);
+			}
 		}
 		
-		System.out.println("Oferta : " + deal.getTitle());
-		System.out.println("	detalhe Oferta : " + deal.toString());
-		System.out.println("Opções escolhidas");
-		for (int id : IdsInt) {
-			System.out.println("id: " + id);
-			deal.addOption(optionService.getOptionById(id));
+		// Caso: Desvincula
+		if (action.equalsIgnoreCase("desvincular")) {
+			// recebe a lista de Opções a serem desvinculadas
+			String[] Ids = request.getParameterValues("ipOpcaoDesvincular");
+			
+			if(Ids != null) {
+				int[] IdsInt = new int[Ids.length]; 
+				for (int i = 0; i < IdsInt.length; i++){
+					IdsInt[i] = Integer.parseInt(Ids[i]); 
+				}
+				
+				for (int id : IdsInt) {
+					optionService.getOptionById(id).setVinculado(false);
+					dealService.getDeal(title).removeOptionById(id);
+				}
+			}else {
+				// Remover todos as opções da lista da oferta
+				if(dealService.getDeal(title).getOptions().size() > 0) {
+					// Setar as opções da lista para false
+					for(int i = 0; i < dealService.getDeal(title).getOptions().size(); i++) {
+						optionService.getOptionById(dealService.getDeal(title).getOptions().get(i).getId()).setVinculado(false);
+					}
+					dealService.getDeal(title).removeAllOptions();
+				}
+			}
+
 		}
 		
-		response.sendRedirect(request.getContextPath() + "/deal_list.jsp");
+		// redireciona para a página de vinculação de Opções com Oferta. 
+		request.setAttribute("title", title);
+		request.getRequestDispatcher("vincular_opcoes.jsp").forward(request, response); 
+		
+		
 	}
 
 }

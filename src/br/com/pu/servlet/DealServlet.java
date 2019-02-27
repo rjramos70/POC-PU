@@ -64,6 +64,8 @@ public class DealServlet extends HttpServlet {
 	@SuppressWarnings("deprecation")
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// Recebe os parametros da tela, não foi feita validação no Servlet para ganho de tempo, pois 
+		// já temos validação de preenchimento nas telas.
 		String title = request.getParameter("title");
 		String text = request.getParameter("text");
 		Date publishDate = null;
@@ -76,20 +78,11 @@ public class DealServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		String type = request.getParameter("tipo");
-		/*
-		System.out.println("=========== Values ================= ");
-		System.out.println(" title: " + title);
-		System.out.println(" text: " + text);
-		System.out.println(" publishDate: " + publishDate);
-		System.out.println(" endDate: " + endDate);
-		System.out.println(" type: " + type);
-		*/
+		
+		// Cria oferta
 		dealService.createDeal(title, text, publishDate, endDate, type);
 		
-		// Deal d = dealService.getDeal(title);
-		// System.out.println("Deal : " + d.toString());
-		response.setContentType("text/html");
-		
+		// redireciona para lista de ofertas
 		response.sendRedirect(request.getContextPath() + "/deal_list.jsp");
 	
 	}

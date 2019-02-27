@@ -1,27 +1,13 @@
 package br.com.pu.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
- 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-
 import br.com.pu.model.Deal;
-import br.com.pu.servlet.DealServlet;
-import junit.framework.TestCase;
 
 public class DealServiceTest {
 	

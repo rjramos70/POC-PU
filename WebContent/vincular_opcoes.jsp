@@ -125,15 +125,19 @@ function drop(ev) {
 	  <tbody>
 	    <tr>
 	      <th>
+			<form method="post" action="VinculaOpcoesServlet">
+		      <input type="hidden" name="title" value="<%=deal.getTitle()%>">
+		      <input type="hidden" name="action" value="desvincular">
 			<div class="card" style="width: 22rem;">
 			  <div class="card-header">
 			    <%=deal.getTitle()%>
 			  </div>
 			  <div class="card-body">
 			    <h5 class="card-title"><%=deal.getText()%></h5>
-			    <p class="card-text">Created: <%=deal.getCreateDate()%></p>
-			    <p class="card-text">Publish: <%=deal.getPublishDate()%></p>
-			    <p class="card-text">End: <%=deal.getEndDate()%></p>
+			    <p class="card-text">Tipo: <%=deal.getType()%></p>
+			    <%
+			    if(deal.getOptions().size() > 0){
+			    %>
 			    <div class="card" style="width: 18rem;">
 				  <div class="card-header">
 				    Opções de Compra
@@ -146,7 +150,7 @@ function drop(ev) {
 				    <div class="input-group mb-3">
 					  <div class="input-group-prepend">
 					    <div class="input-group-text">
-					    	<input type="checkbox" name="ipOpcao" value="<%=option.getId()%>"/>
+					    	<input type="checkbox" name="ipOpcaoDesvincular" value="<%=option.getId()%>" <%if(option.isVinculado()){%> checked <%} %>/>
 					    </div>
 					  </div>
 					  <input type="text" class="form-control" aria-label="Text input with checkbox" value="<%=option.getTitle()%>" readonly="true">
@@ -156,29 +160,40 @@ function drop(ev) {
 					%>
 				  </div>
 				</div>
+				<br>
+				<button type="submit" class="btn btn-primary">Desvincular</button>
 			  </div>
+			  <%
+			  }
+			  %>
 			</div>
-			
+		</form>
 		  </th>
 	      <td>
 	      <form method="post" action="VinculaOpcoesServlet">
 	      <input type="hidden" name="title" value="<%=deal.getTitle()%>">
+	      <input type="hidden" name="action" value="vincular">
 			<% 
 			if (optionList.size() > 0) { 
+				int count = 0;
 				for (BuyOption option : optionList) {
+					if(!option.isVinculado()){
+						count++;
 			%>
 			<div class="input-group mb-3">
 			  <div class="input-group-prepend">
 			    <div class="input-group-text">
-			    	<input type="checkbox" name="ipOpcao" value="<%=option.getId()%>"/>
+			    	<input type="checkbox" name="ipOpcaoVincular" value="<%=option.getId()%>"  <% if(option.isVinculado()){ %> checked <% } %>/>
 			    </div>
 			  </div>
 			  <input type="text" class="form-control" aria-label="Text input with checkbox" value="<%=option.getTitle()%>" readonly="true">
 			</div>
 			<%
+					}
 				}
-			%>
-			  <button type="submit" class="btn btn-primary">Vincular Opções</button>
+				if(count != 0){ %>  
+			  		<button type="submit" class="btn btn-primary">Vincular</button>
+			<%  } %>
 		   </form>
 			<%
 			}else{

@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lista de Ofertas</title>
+
+
+
 </head>
 <body>
 <%@ include file="parts/header.jsp" %>  
@@ -23,7 +26,7 @@
 			<tr style="background-color: white;" class="table table-borderless">
 				<th scope="col" class="text-right"><a
 					href="<%=request.getContextPath()%>/deal_cad.jsp"
-					style="align-content: flex-end;">Add Deal(+)</a></th>
+					style="align-content: flex-end;">Deal(+)</a></th>
 			</tr>
 			<tbody>
 				<table class="table">
@@ -75,9 +78,9 @@
 								<form method="post"
 									action="<%=request.getContextPath()%>/vincular_opcoes.jsp">
 									<input type="hidden" id="title" name="title" value="<%=d.getTitle()%>"> 
-									<button type="submit">
-										<img src="<%=request.getContextPath()%>/images/attach-option-24x24.png"
-											class="rounded" alt="Vai para a tela onde devemos vincular as opções de compra." style="border: none;">
+									<button type="submit" data-toggle="tooltip" title="Não perca!" data-placement="left">
+										<img src="<%=request.getContextPath()%>/images/attach-option-24x24-v2.png"
+											class="rounded" data-toggle="tooltip" title="Vai para a tela onde devemos vincular as opções de compra.!" data-placement="left" style="border: none;">
 									</button>
 								</form>
 							</td>
@@ -93,7 +96,10 @@
 		</table>
 	</div>
 
-
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip(); 
+});
 
 </body>
 </html>

@@ -10,15 +10,34 @@ public class BuyOptionService {
 	private static final long serialVersionUID = 1L;
 	private DbRepository repo = DbRepository.getInstance();
 	
-	public void insertOption(String title, Double normalPrice, Double salePrice, Double percentageDiscount, long quantityCupom,
+	/**
+	 * Insere nova Opção de Compra a lista principal.
+	 * 
+	 * @param title
+	 * @param text
+	 * @param normalPrice
+	 * @param salePrice
+	 * @param percentageDiscount
+	 * @param quantityCupom
+	 * @param startDate
+	 * @param endDate
+	 * @return void
+	 */
+	public void insertOption(String title, String text, Double normalPrice, Double salePrice, Double percentageDiscount, long quantityCupom,
 			Date startDate, Date endDate) {
-		BuyOption buyOption = new BuyOption(title, normalPrice, salePrice, percentageDiscount, quantityCupom, startDate, endDate);
+		BuyOption buyOption = new BuyOption(title, text, normalPrice, salePrice, percentageDiscount, quantityCupom, startDate, endDate);
 		if(!this.repo.getOptionList().contains(buyOption)) {
 			buyOption.setId(this.repo.getBuyOptionId());
 			this.repo.getOptionList().add(buyOption);
 		}
 	}
 	
+	/**
+	 * Atualiza uma Opção de Compra na lista principal
+	 * 
+	 * @param option
+	 * @return void
+	 */
 	public void updateOption(BuyOption option) {
 		if(this.repo.getOptionList().contains(option)) {
 			for (BuyOption tmpOption : this.repo.getOptionList()) {
@@ -34,6 +53,11 @@ public class BuyOptionService {
 		}
 	}
 	
+	/**
+	 * Remove uma Opção de Compra da lista principal.
+	 * 
+	 * @param option
+	 */
 	public void deleteOption(BuyOption option) {
 		if(this.repo.getOptionList().contains(option)) {
 			this.repo.getOptionList().remove(option);

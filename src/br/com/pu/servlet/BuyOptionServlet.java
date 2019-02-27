@@ -41,16 +41,8 @@ public class BuyOptionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		System.out.println("request.getParameter(\"title\") : " + request.getParameter("title"));
-		System.out.println("request.getParameter(\"normalPrice\") : " + request.getParameter("normalPrice"));
-		System.out.println("request.getParameter(\"salePrice\") : " + request.getParameter("salePrice"));
-		System.out.println("request.getParameter(\"percentageDiscount\") : " + request.getParameter("percentageDiscount"));
-		System.out.println("request.getParameter(\"quantityCupom\") : " + request.getParameter("quantityCupom"));
-		System.out.println("request.getParameter(\"startDate\") : " + request.getParameter("startDate"));
-		System.out.println("request.getParameter(\"endDate\") : " + request.getParameter("endDate"));
-		
 		String title = request.getParameter("title");
+		String text = request.getParameter("text");
 		Double normalPrice = Double.valueOf(request.getParameter("normalPrice").replaceAll(",", "."));
 		Double salePrice = Double.valueOf(request.getParameter("salePrice").replaceAll(",", "."));
 		Double percentageDiscount = Double.valueOf(request.getParameter("percentageDiscount").replaceAll(",", "."));
@@ -67,7 +59,7 @@ public class BuyOptionServlet extends HttpServlet {
 		}
 		
 		if(this.optionService.getOptionByTitle(title) == null) {
-			this.optionService.insertOption(title, normalPrice, salePrice, percentageDiscount, quantityCupom, startDate, endDate);
+			this.optionService.insertOption(title, text, normalPrice, salePrice, percentageDiscount, quantityCupom, startDate, endDate);
 		}
 		
 		response.sendRedirect(request.getContextPath() + "/buy_option_list.jsp");

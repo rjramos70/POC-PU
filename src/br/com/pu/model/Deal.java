@@ -84,6 +84,24 @@ public class Deal {
 		this.totalSold = totalSold;
 	}
 
+	public void incrementTotalSold() {
+		this.totalSold++;
+	}
+	
+	public void decrementTotalSold() {
+		this.totalSold--;
+	}
+	
+	public void saleOption(int id) {
+		for(BuyOption opt: this.options) {
+			if(opt.getId() == id) {
+				opt.executeSale();
+				incrementTotalSold();
+			}
+		}
+	}
+	
+	
 	public String getType() {
 		return type;
 	}
@@ -96,7 +114,7 @@ public class Deal {
 		return options;
 	}
 	
-	public void addOption(BuyOption option) {
+	public void addOptionInDeal(BuyOption option) {
 		// Verifica se Opition já existe na lista
 		if(!this.options.contains(option)) {
 			this.options.add(option);
@@ -104,10 +122,32 @@ public class Deal {
 
 	}
 	
+	public void removeOptionById(int id) {
+		for (int i = 0; i < options.size(); i++) {
+			if(options.get(i).getId() == id) {
+				this.options.remove(i);
+			}
+		}
+	}
+	
+	public void removeAllOptions() {
+		this.options.clear();
+	}
+	
 	public void updateTotalSold() {
-		// Implementar
+		this.totalSold++;
 	}
 
+	public Double getBestSalePrice() {
+		Double best = (double) 999999999;
+		for(BuyOption val : this.options) {
+			if(val.getSalePrice() < best) {
+				best = val.getSalePrice();
+			}
+		}
+		return best;
+	}
+	
 	public int getQtdOpcoesVinculadas() {
 		return this.options.size();
 	}
@@ -118,12 +158,12 @@ public class Deal {
 	}
 	
 	public String uppercaseFirstLetter(String text) {
-		System.out.println(" uppercaseFirstLetter : " + text);
+		
 		if (text == null || text.length() == 0) {
 	        return text;
 	    }
 	    String[] w = text.split(" ");
-	    System.out.println(" w.length : " + w.length);
+	    
 	    String ret = null;
 	    for (String word : w) {
 	    	ret += word.substring(0, 1).toUpperCase() + word.substring(1);

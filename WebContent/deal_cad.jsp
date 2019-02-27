@@ -18,7 +18,7 @@
 			novalidate>
 			<div class="row justify-content-center align-items-center"
 				style="height: 100vh">
-				<div class="col-4">
+				<div class="col-6">
 					<div class="card">
 						<div class="card-body">
 							<div class="form-group">
@@ -58,7 +58,7 @@
 			
 							    </select>
 							 </div>
-							<button type="submit" id="sendlogin" class="btn btn-primary">Create</button>
+							<button type="submit" id="sendlogin" class="btn btn-primary">Cadastrar</button>
 						</div>
 					</div>
 				</div>

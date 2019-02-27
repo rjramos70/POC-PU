@@ -13,7 +13,16 @@
 	integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
 	crossorigin="anonymous">
 
-<title>Insert title here</title>
+	<title>Insert title here</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<!--  
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  	-->
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>	
+
+
 </head>
 <body>
 
@@ -48,8 +57,16 @@
           Opção de Compra
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarOpcaoCompra">
-          <!--  <a class="dropdown-item" href="#">Cadastro</a>  -->
-          <a class="dropdown-item" href="buy_option_list.jsp">Listar Opções de Compra</a>
+          <a class="dropdown-item" href="<%=request.getContextPath()%>/buy_option_cad.jsp">Cadastro</a>
+          <a class="dropdown-item" href="buy_option_list.jsp">Listar Opções</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarOpcaoCompra" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Vendas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarOpcaoCompra">
+          <a class="dropdown-item" href="sale_list.jsp">Listar Opções para Venda</a>
         </div>
       </li>
       <!-- 
@@ -58,6 +75,7 @@
       </li>
        -->
     </ul>
+    
     <!-- 
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
