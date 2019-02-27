@@ -5,7 +5,7 @@ Projeto de prova de conceito de uma plataforma web de vantagens simplificada do 
 ## Instalar
 
 	1. Baixe o projeto via Github do endereço "https://github.com/rjramos70/POC-PU" e salve dentro da workspace de sua preferência;
-	2. Importe o projeto dentro da IDE de sua preferência, este projeto foi desenvolvido com Spring Tool Suite Spring Tool Suite Version: 3.9.4.RELEASE com servidor de aplicação web Tomcat v8.5 e sistema operacional MacOS Mojave. 	
+	2. Importe o projeto dentro da IDE de sua preferência, este projeto foi desenvolvido com Spring Tool Suite Version: 3.9.4.RELEASE com servidor de aplicação web Tomcat v8.5 e sistema operacional MacOS Mojave. 	
 
 ## Executar
 
