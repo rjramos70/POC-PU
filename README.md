@@ -85,7 +85,8 @@ Escolher a Oferta desejada e clicar no respectivo botão "Vincula" a direta da l
 
 <p align="left">
   <img src="https://raw.githubusercontent.com/rjramos70/POC-PU/master/WebContent/images/tela_vincula_opcao_de_compra_escolhida_vinculada.png" width="80%" height="80%">
-</p>t
+</p>
+
 Para desvincular alguma das opções basta desmarcar a esquerda e clicar no botão "Desvincular", automaticamente será mostrado na coluna a direita como disponível a ser vinculada em outra Oferta:
 
 <p align="left">
