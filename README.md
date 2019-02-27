@@ -138,6 +138,7 @@ Como esta aplicação é somente uma prova de conceito, não foi escolhido banco
 	12. Inicialmente cada opção de compra tem uma determinada "quantidade de estoque" (quantityCupom), exemplo: OP-1 tem 100 cupons disponíveis, OP-2 tem 30 cupons disponíveis; ao realizar "a venda" através de uma opção de compra, realizamos o decremento da quantidade de cupons da opção selecionada e incrementamos a quantidade global vendida na oferta. [ Atendidos ]
 	13. Uma opção de compra pode se esgotar e estar indisponível para a compra, mas a oferta pode permanecer no ar com outras opção de compra válidas e com "estoque disponível". Caso todas as opções de compra se esgotem, a oferta é totalmente esgotada e desabilitada para a compra. [ Atendidos ]
 	14. Quando uma opção de compra se esgota, seu botão de compra é desabilitado. [ Atendidos ]
+	15. Deploy da aplicação em ambiente AWS. [ Não Atendidos ]
 
 ## Melhorias
 
@@ -148,5 +149,6 @@ Para a evolução da aplicação devemos:
 	3. Implementação de novos frontends a partir da refatoração do backend sendo transformado em microserviços ou APIs.
 	4. Melhorias nas interfaces por parte de uma equipe de UX/UI.
 	5. Mais user test para identificar falhas e melhorias.
+	6. Migrar a aplicação para um ambiente de nuvem (AWS, Digital Ocean, entre outros).
 
 
